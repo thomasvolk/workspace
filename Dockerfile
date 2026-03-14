@@ -17,6 +17,7 @@ RUN apt install -y \
     neovim \
     emacs \
     git \
+    curl \
     zsh
 
 RUN rm -rf /var/lib/apt/lists/*
