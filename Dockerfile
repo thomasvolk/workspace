@@ -32,11 +32,16 @@ RUN apt install -y \
     ripgrep \
     jq
 
-# Install Ocaml package manager
-RUN apt install -y opam
+# Install software development stuff
+RUN apt install -y opam guile-3.0 
+
+# Text processing
+RUN apt install -y pandoc
 
 # Clear up
 RUN rm -rf /var/lib/apt/lists/*
+
+COPY initialize-workspace /usr/local/bin/
 
 # Set user
 USER thomas
