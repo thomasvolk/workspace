@@ -20,17 +20,14 @@ RUN apt install -y \
     curl \
     zsh
 
-
-# Create a non-root user (optional but recommended)
-RUN useradd -m -s /bin/bash thomas
-
 # Install tools
 RUN apt install -y \
     build-essential \
     aspell aspell-en aspell-de \
     nodejs \
     ripgrep \
-    jq
+    jq \
+    python3-venv
 
 # Install software development stuff
 RUN apt install -y opam guile-3.0 
@@ -38,15 +35,15 @@ RUN apt install -y opam guile-3.0
 # Text processing
 RUN apt install -y pandoc
 
-# Clear up
-RUN rm -rf /var/lib/apt/lists/*
+# Create user
+ARG USERNAME=workspace
+RUN useradd -m -s /bin/zsh ${USERNAME}
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+# Set default shell to bash
+#SHELL ["/bin/zsh", "-c"]
 
 COPY initialize-workspace /usr/local/bin/
-
-# Set user
-USER thomas
-WORKDIR /home/thomas
-# Set default shell to bash
-SHELL ["/bin/zsh", "-c"]
 # Default command (optional)
+
 CMD ["/bin/zsh"]

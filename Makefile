@@ -1,4 +1,4 @@
 IMAGE=ubuntu25-dev
 
 build:
-	docker build -t $(IMAGE) .
+	docker build --build-arg USERNAME=$$(whoami) -t $(IMAGE) .
