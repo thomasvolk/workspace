@@ -7,7 +7,8 @@ build: $(ISO_IMAGE) $(IMAGE) $(EDK2_VARS)
 	./workspace -drive file=$(ISO_IMAGE),readonly=on,media=cdrom 
 
 $(ISO_IMAGE):
-	cp $(HOME)/$(ISO_IMAGE) .
+	curl -L -o $(HOME)/Downloads/$(ISO_IMAGE) https://cdimage.ubuntu.com/releases/25.10/release/$(ISO_IMAGE)
+	cp $(HOME)/Downloads/$(ISO_IMAGE) .
 	xattr -c $(ISO_IMAGE)
 
 $(IMAGE):
