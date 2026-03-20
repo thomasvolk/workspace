@@ -15,10 +15,11 @@ sudo apt install -y \
     zsh \
     build-essential \
     aspell aspell-en aspell-de \
-    nodejs \
     ripgrep \
     jq \
     python3-venv \
     opam \
     guile-3.0 \
     pandoc
+
+sudo apt autoremove -y

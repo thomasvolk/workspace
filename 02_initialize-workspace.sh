@@ -15,6 +15,13 @@ python3 -m venv $HOME/python3
 source $HOME/python3/bin/activate
 pip install --upgrade pip
 
+#nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+source $HOME/.nvm/nvm.sh
+nvm install node
+
+
+
 # install ocaml and opam
 opam init --auto-setup --disable-sandboxing
 
@@ -24,6 +31,7 @@ export PATH="$HOME/.bin:$HOME/.config/emacs/bin:$PATH"
 export EDITOR_AI=copilot
 
 source $HOME/python3/bin/activate
+source $HOME/.nvm/nvm.sh
 
 alias e='emacs -nw'
 alias ec='emacsclient'
@@ -31,6 +39,8 @@ alias ed='emacs --daemon'
 
 alias v=nvim
 EOF
+
+source $HOME/.env
 
 if grep -qF "source $HOME/.env" $HOME/.zshrc; then
   echo ".env already added to .zshrc"
