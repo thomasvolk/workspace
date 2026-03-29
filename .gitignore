@@ -4,3 +4,4 @@ home/
 *.iso
 *.fd
 .DS_Store
+nohup.out
